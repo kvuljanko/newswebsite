@@ -21,15 +21,37 @@
 			
             $_picture = $ID . '-' . rand(1,100) . $ext;
 			copy($_FILES['picture']['tmp_name'], "images/".$_picture);
+			copy($_FILES['picture']['tmp_name'], "images/".$_picture."x768");
+			copy($_FILES['picture']['tmp_name'], "images/".$_picture."x480");
+			copy($_FILES['picture']['tmp_name'], "images/".$_picture."x1");
+
+			
 			
 			if ($ext == '.jpg' || $ext == '.png' || $ext == '.gif') { # test if format is picture
 				$_query  = "UPDATE posts SET image='" . $_picture . "'";
-				$_query .= " WHERE id=" . $ID . " LIMIT 1";
+				$_query .= " WHERE id=" . (int)$_POST['edit'] . " LIMIT 1";
 				$_result = @mysqli_query($MySQL, $_query);
 				$_SESSION['message'] .= '<p>You successfully added picture.</p>';
 			}
-        }
-		
+			if ($ext == '.jpg' || $ext == '.png' || $ext == '.gif') { # test if format is picture
+				$_query  = "UPDATE posts SET imagex768='" . $_picture . "x768'";
+				$_query .= " WHERE id=" . (int)$_POST['edit'] . " LIMIT 1";
+				$_result = @mysqli_query($MySQL, $_query);
+				$_SESSION['message'] .= '<p>You successfully added picture.</p>';
+			}
+			if ($ext == '.jpg' || $ext == '.png' || $ext == '.gif') { # test if format is picture
+				$_query  = "UPDATE posts SET imagex480='" . $_picture . "x480'";
+				$_query .= " WHERE id=" . (int)$_POST['edit'] . " LIMIT 1";
+				$_result = @mysqli_query($MySQL, $_query);
+				$_SESSION['message'] .= '<p>You successfully added picture.</p>';
+			}
+			if ($ext == '.jpg' || $ext == '.png' || $ext == '.gif') { # test if format is picture
+				$_query  = "UPDATE posts SET imagex1='" . $_picture . "x1'";
+				$_query .= " WHERE id=" . (int)$_POST['edit'] . " LIMIT 1";
+				$_result = @mysqli_query($MySQL, $_query);
+				$_SESSION['message'] .= '<p>You successfully added picture.</p>';
+			}
+		}
 		$_SESSION['message'] .= '<p>You successfully added post!</p>';
 		
 		# Redirect
@@ -51,14 +73,37 @@
             
 			$_picture = (int)$_POST['edit'] . '-' . rand(1,100) . $ext;
 			copy($_FILES['picture']['tmp_name'], "images/".$_picture);
+			copy($_FILES['picture']['tmp_name'], "images/".$_picture."x768");
+			copy($_FILES['picture']['tmp_name'], "images/".$_picture."x480");
+			copy($_FILES['picture']['tmp_name'], "images/".$_picture."x1");
+
 			
 			
 			if ($ext == '.jpg' || $ext == '.png' || $ext == '.gif') { # test if format is picture
-				$_query  = "UPDATE news SET image='" . $_picture . "'";
+				$_query  = "UPDATE posts SET image='" . $_picture . "'";
 				$_query .= " WHERE id=" . (int)$_POST['edit'] . " LIMIT 1";
 				$_result = @mysqli_query($MySQL, $_query);
 				$_SESSION['message'] .= '<p>You successfully added picture.</p>';
 			}
+			if ($ext == '.jpg' || $ext == '.png' || $ext == '.gif') { # test if format is picture
+				$_query  = "UPDATE posts SET imagex768='" . $_picture . "x768'";
+				$_query .= " WHERE id=" . (int)$_POST['edit'] . " LIMIT 1";
+				$_result = @mysqli_query($MySQL, $_query);
+				$_SESSION['message'] .= '<p>You successfully added picture.</p>';
+			}
+			if ($ext == '.jpg' || $ext == '.png' || $ext == '.gif') { # test if format is picture
+				$_query  = "UPDATE posts SET imagex480='" . $_picture . "x480'";
+				$_query .= " WHERE id=" . (int)$_POST['edit'] . " LIMIT 1";
+				$_result = @mysqli_query($MySQL, $_query);
+				$_SESSION['message'] .= '<p>You successfully added picture.</p>';
+			}
+			if ($ext == '.jpg' || $ext == '.png' || $ext == '.gif') { # test if format is picture
+				$_query  = "UPDATE posts SET imagex1='" . $_picture . "x1'";
+				$_query .= " WHERE id=" . (int)$_POST['edit'] . " LIMIT 1";
+				$_result = @mysqli_query($MySQL, $_query);
+				$_SESSION['message'] .= '<p>You successfully added picture.</p>';
+			}
+
         }
 		
 		$_SESSION['message'] = '<p>You successfully changed post!</p>';
